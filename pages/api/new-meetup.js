@@ -29,7 +29,6 @@ async function handler(req, res) {
 
     res.status(201).json({ message: "meetup inserted successfully!" });
   }
-  res.status(404).json({ message: "Failed to insert!" });
 }
 
 export default handler;
