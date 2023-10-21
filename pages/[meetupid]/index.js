@@ -34,7 +34,12 @@ export async function getStaticPaths(a) {
   client.close();
 
   return {
-    fallback: false, //true or false
+    fallback: "blocking", //true or false
+    //difference between true and blocking
+    //with true it will imeddiatelly return an empty page, and then pull down dunamically generated content
+    // once thats done, so we need to handle thats case, that the page doesn't have the data yet.
+
+    //with "blocking" --> the user won't see anything (any error) untill the page was pre-generated and the finished page will be served
     paths: meetups.map((meetup) => ({
       params: { meetupid: meetup._id.toString() },
     })),
